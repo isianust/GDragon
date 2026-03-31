@@ -256,7 +256,7 @@ export interface MapNode {
   publicOrder: number;
   /** 城池是否正受瘟疫影響。 */
   isPlagued: boolean;
-  /** 瘟疫剩餘回合數（如 90 ≈ 3 個月，以每日 1 tick 計算）。 */
+  /** 瘟疫剩餘回合數（如 90 ≈ 3 個月, 以每日 1 tick 計算）。 */
   plagueTicksRemaining: number;
 }
 
