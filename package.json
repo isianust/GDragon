@@ -1,0 +1,20 @@
+{
+  "name": "dragon",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test:engine": "tsx src/test.ts",
+    "test:ai": "tsx src/testAi.ts",
+    "test:riot": "tsx src/riot-test.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "tsx": "^4.19.3",
+    "typescript": "~5.9.3",
+    "vite": "^5.4.14"
+  }
+}
