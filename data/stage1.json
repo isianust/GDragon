@@ -1,0 +1,199 @@
+{
+  "factions": [
+    {
+      "id": "FAC_SHU",
+      "name": "蜀",
+      "rulerId": "OFC_LIU",
+      "capitalNodeId": "CITY_START",
+      "aiArchetype": "DEFENSIVE",
+      "globalPrestige": 55,
+      "type": "WARLORD",
+      "allianceId": null,
+      "isRebel": false,
+      "activeEdict": "NONE",
+      "edictDuration": 0
+    },
+    {
+      "id": "FAC_ENEMY",
+      "name": "河北諸鎮",
+      "rulerId": "OFC_ENEMY_HUA",
+      "capitalNodeId": "CITY_TARGET",
+      "aiArchetype": "AGGRESSIVE",
+      "globalPrestige": 42,
+      "type": "WARLORD",
+      "allianceId": null,
+      "isRebel": false,
+      "activeEdict": "NONE",
+      "edictDuration": 0
+    }
+  ],
+  "officers": [
+    {
+      "id": "OFC_LIU",
+      "name": "劉備",
+      "stats": { "command": 75, "martial": 70, "intel": 75, "politics": 80, "luck": 95 },
+      "trait": "TRAIT_BENEVOLENT",
+      "status": "IDLE",
+      "locationId": "CITY_START",
+      "ownerId": "FAC_SHU",
+      "loyalty": 100,
+      "ambition": 40,
+      "bondIds": ["OFC_GUAN", "OFC_ZHANG"],
+      "feudFactionId": null
+    },
+    {
+      "id": "OFC_GUAN",
+      "name": "關羽",
+      "stats": { "command": 95, "martial": 98, "intel": 75, "politics": 60, "luck": 80 },
+      "trait": "TRAIT_WARGOD",
+      "status": "IDLE",
+      "locationId": "CITY_START",
+      "ownerId": "FAC_SHU",
+      "loyalty": 95,
+      "ambition": 35,
+      "bondIds": ["OFC_LIU", "OFC_ZHANG"],
+      "feudFactionId": null
+    },
+    {
+      "id": "OFC_ZHANG",
+      "name": "張飛",
+      "stats": { "command": 85, "martial": 98, "intel": 30, "politics": 22, "luck": 60 },
+      "trait": "TRAIT_FIERCE",
+      "status": "IDLE",
+      "locationId": "CITY_START",
+      "ownerId": "FAC_SHU",
+      "loyalty": 92,
+      "ambition": 45,
+      "bondIds": ["OFC_LIU", "OFC_GUAN"],
+      "feudFactionId": null
+    },
+    {
+      "id": "OFC_ENEMY_HUA",
+      "name": "華雄",
+      "stats": { "command": 78, "martial": 90, "intel": 40, "politics": 35, "luck": 55 },
+      "trait": "TRAIT_FIERCE",
+      "status": "IDLE",
+      "locationId": "CITY_TARGET",
+      "ownerId": "FAC_ENEMY",
+      "loyalty": 70,
+      "ambition": 50,
+      "bondIds": [],
+      "feudFactionId": null
+    },
+    {
+      "id": "OFC_ENEMY_LI",
+      "name": "李傕",
+      "stats": { "command": 72, "martial": 82, "intel": 50, "politics": 40, "luck": 45 },
+      "trait": "TRAIT_FIERCE",
+      "status": "IDLE",
+      "locationId": "GATE_TIGER",
+      "ownerId": "FAC_ENEMY",
+      "loyalty": 65,
+      "ambition": 55,
+      "bondIds": [],
+      "feudFactionId": null
+    }
+  ],
+  "nodes": [
+    {
+      "id": "CITY_START",
+      "name": "蜀軍大營",
+      "type": "CITY",
+      "ownerId": "FAC_SHU",
+      "defense": 500,
+      "maxDefense": 500,
+      "resources": { "gold": 50000, "food": 50000, "troops": 15000 },
+      "mayorId": "OFC_LIU",
+      "policy": "POLICY_FOCUS_GOLD",
+      "hasEmperor": false,
+      "population": 12000,
+      "publicOrder": 55,
+      "isPlagued": false,
+      "plagueTicksRemaining": 0
+    },
+    {
+      "id": "GATE_TIGER",
+      "name": "虎牢關",
+      "type": "GATE",
+      "ownerId": "FAC_ENEMY",
+      "defense": 2000,
+      "maxDefense": 2000,
+      "resources": { "gold": 0, "food": 0, "troops": 3000 },
+      "mayorId": null,
+      "policy": "POLICY_BALANCED",
+      "hasEmperor": false,
+      "population": 2000,
+      "publicOrder": 45,
+      "isPlagued": false,
+      "plagueTicksRemaining": 0
+    },
+    {
+      "id": "CITY_TARGET",
+      "name": "平原城",
+      "type": "CITY",
+      "ownerId": "FAC_ENEMY",
+      "defense": 1000,
+      "maxDefense": 1000,
+      "resources": { "gold": 5000, "food": 5000, "troops": 5000 },
+      "mayorId": null,
+      "policy": "POLICY_BALANCED",
+      "hasEmperor": false,
+      "population": 8000,
+      "publicOrder": 50,
+      "isPlagued": false,
+      "plagueTicksRemaining": 0
+    }
+  ],
+  "routes": [
+    {
+      "id": "ROUTE_MAIN",
+      "sourceNodeId": "CITY_START",
+      "targetNodeId": "GATE_TIGER",
+      "type": "PLAIN",
+      "distance": 100,
+      "isHidden": false,
+      "currentWeather": "CLEAR",
+      "weatherDuration": 0
+    },
+    {
+      "id": "ROUTE_GATE_TO_TARGET",
+      "sourceNodeId": "GATE_TIGER",
+      "targetNodeId": "CITY_TARGET",
+      "type": "PLAIN",
+      "distance": 50,
+      "isHidden": false,
+      "currentWeather": "CLEAR",
+      "weatherDuration": 0
+    },
+    {
+      "id": "ROUTE_TARGET_TO_GATE",
+      "sourceNodeId": "CITY_TARGET",
+      "targetNodeId": "GATE_TIGER",
+      "type": "PLAIN",
+      "distance": 50,
+      "isHidden": false,
+      "currentWeather": "CLEAR",
+      "weatherDuration": 0
+    },
+    {
+      "id": "ROUTE_GATE_TO_START",
+      "sourceNodeId": "GATE_TIGER",
+      "targetNodeId": "CITY_START",
+      "type": "PLAIN",
+      "distance": 100,
+      "isHidden": false,
+      "currentWeather": "CLEAR",
+      "weatherDuration": 0
+    },
+    {
+      "id": "ROUTE_BYPASS",
+      "sourceNodeId": "CITY_START",
+      "targetNodeId": "CITY_TARGET",
+      "type": "MOUNTAIN",
+      "distance": 300,
+      "isHidden": true,
+      "currentWeather": "CLEAR",
+      "weatherDuration": 0
+    }
+  ]
+}
