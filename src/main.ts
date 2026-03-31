@@ -573,6 +573,8 @@ function mountApp(): void {
 
   canvas.addEventListener("click", (ev) => {
     if (!gameStarted) return;
+    // 忽略攝影機拖曳結束後的 click 事件
+    if (renderer.camera.isDragging) return;
     const node = renderer.pickNodeAt(ev.clientX, ev.clientY);
     if (node) {
       ev.stopPropagation();
