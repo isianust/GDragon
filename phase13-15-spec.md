@@ -2,7 +2,7 @@
 
 > **Project Dragon 龍騰** — 三國大戰略遊戲  
 > **版本：** 1.0.0-draft  
-> **日期：** 2025-07  
+> **日期：** 2026-03  
 > **負責模組：** DiplomacyEngine, MultiplayerService, EndgameEngine  
 > **相關原始碼：** 待建立（`src/DiplomacyEngine.ts`, `src/MultiplayerService.ts`, `src/EndgameEngine.ts`）  
 > **前置依賴：** [Phase 1–4](phase1-4-spec.md)、[Phase 5–6](phase5-6-spec.md)、[Phase 7–9](phase7-9-spec.md)、[Phase 10–12](phase10-12-spec.md)

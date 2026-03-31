@@ -2,7 +2,7 @@
 
 > **Project Dragon 龍騰** — 三國大戰略遊戲  
 > **版本：** 1.0.0-draft  
-> **日期：** 2025-07  
+> **日期：** 2026-03  
 > **負責模組：** SandboxEngine, GeopoliticsEngine, CatastropheEngine  
 > **相關原始碼：** `src/CatastropheEngine.ts`, `src/types.ts`  
 > **前置依賴：** [Phase 1–4](phase1-4-spec.md)、[Phase 5–6](phase5-6-spec.md)、[Phase 7–9](phase7-9-spec.md)

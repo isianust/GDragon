@@ -2,7 +2,7 @@
 
 > **Project Dragon 龍騰** — 三國大戰略遊戲  
 > **版本：** 1.0.0-draft  
-> **日期：** 2025-07  
+> **日期：** 2026-03  
 > **負責模組：** View Layer, Asset Pipeline  
 > **相關原始碼：** `src/mapCanvas.ts`, `src/AssetManager.ts`, `src/ComfyUIService.ts`, `src/style.css`  
 > **前置依賴：** [Phase 1–4 核心引擎](phase1-4-spec.md)

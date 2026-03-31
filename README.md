@@ -46,6 +46,7 @@
 | 💥 **災變引擎** | 蝗災、瘟疫、地震、洪水等隨機天災事件 |
 | 🏛️ **地緣政治** | 勢力類型（群雄/遊牧/盜賊/海寇）、擁帝、聯盟、詔令 |
 | 🎨 **Canvas 渲染** | 原生 Canvas 世界地圖 + Glassmorphism HTML DOM UI |
+| 🗺️ **大地圖系統** | Vampire Survivors 風格可捲動大地圖；攝影機平移/縮放；Tower Defense 固定路線行走；小地圖導覽 |
 | 💾 **資料持久化** | IndexedDB 自動存檔（每 30 ticks）、手動存讀檔 |
 | 🌐 **多語系支援** | 繁體中文、簡體中文、English |
 | 🖼️ **AI 美術接口** | ComfyUI Service 預留 AI 生成圖像管線 |
@@ -125,8 +126,9 @@ Tick N
 | **語言** | TypeScript 5.9（Strict Mode） | 型別安全的遊戲邏輯 |
 | **建置工具** | Vite 5.x | 開發伺服器、HMR、Production Build |
 | **執行環境** | 純瀏覽器（Vanilla JS） | 零外部 Runtime 依賴 |
-| **渲染** | Canvas 2D API | 世界地圖繪製 |
+| **渲染** | Canvas 2D API + Camera System | 世界地圖繪製（支援平移/縮放） |
 | **UI** | 原生 HTML DOM + CSS | Glassmorphism 風格介面 |
+| **地圖系統** | Camera + World Coordinates | Vampire Survivors 風格大地圖 + Tower Defense 路徑渲染 |
 | **字型** | Noto Sans TC / Roboto | 中文/英文顯示 |
 | **持久化** | IndexedDB | 遊戲存檔與讀取 |
 | **測試執行** | tsx | TypeScript 直接執行測試 |
@@ -184,7 +186,7 @@ GDragon/
 │   ├── main.ts                     # 應用程式入口，UI 掛載、事件綁定
 │   ├── types.ts                    # 所有核心介面定義（Officer, Army, MapNode …）
 │   ├── tickEngine.ts               # Tick 主迴圈編排器
-│   ├── gameState.ts                # 遊戲狀態管理
+│   ├── gamePersistence.ts          # 遊戲存讀檔（IndexedDB）
 │   ├── gameMeta.ts                 # 劇本中繼資料
 │   ├── gameTime.ts                 # 曆法與 Tick 時間轉換
 │   ├── gamePersistence.ts          # IndexedDB 存讀檔
@@ -217,11 +219,12 @@ GDragon/
 │   ├── dispatch.ts                 # 派兵出征邏輯
 │   ├── pathfind.ts                 # 路線規劃演算法
 │   ├── simulationScheduler.ts      # 幀排程器（Tick 與渲染同步）
+│   ├── camera.ts                   # 攝影機系統（平移/縮放/世界座標轉換）
 │   ├── playerDefeat.ts             # 敗戰條件判定
 │   ├── playerVictory.ts            # 勝利條件判定
 │   ├── loader.ts                   # 劇本 JSON 解析 → GameState
 │   ├── mapCanvas.ts                # Canvas 世界地圖渲染器
-│   ├── mapLayout.ts                # 節點/路線佈局計算
+│   ├── mapLayout.ts                # 節點世界座標佈局（大地圖系統）
 │   ├── commanderGlyph.ts           # 武將頭像渲染
 │   ├── rosterLabels.ts             # 武將數值格式化
 │   ├── style.css                   # Glassmorphism UI 樣式
@@ -370,10 +373,22 @@ npm run test:riot
 | 階段 | 內容 | 狀態 |
 |------|------|------|
 | **Phase 1-4** | 核心 Headless Engine：Tick 系統、後勤、行軍、戰鬥、攻城、經濟 | ✅ 完成 |
-| **Phase 5-6** | View Layer：Canvas 渲染、Asset 管理、Glassmorphism UI、IndexedDB 持久化 | ✅ 完成 |
+| **Phase 5-6** | View Layer：Canvas 渲染、大地圖攝影機系統、TD 路徑動畫、Asset 管理、Glassmorphism UI、IndexedDB 持久化 | ✅ 完成 |
 | **Phase 7-9** | 戰爭迷霧、環境天候、AI 決策引擎（四大原型）、偵察系統 | 🔨 進行中 |
 | **Phase 10-12** | 地緣政治：勢力類型、擁帝/聯盟、詔令、遊牧/盜賊、災變引擎、公共秩序 | 🔨 進行中 |
 | **Phase 13-15** | 進階功能（規劃中） | 📋 規劃中 |
+
+---
+
+## 🔧 工具評估
+
+完整的 2026 年遊戲開發工具評估報告請參閱 [TOOLING.md](TOOLING.md)，涵蓋：
+
+- 2D 遊戲引擎比較（PixiJS v8 / Phaser v4 / Excalibur / Godot）
+- 渲染技術評估（WebGPU / Canvas 2D）
+- 建構工具（Vite / Vitest / Biome）
+- 桌面封裝（Tauri v2 / Electron）
+- AI 美術生成工具（ComfyUI / Stable Diffusion）
 
 ---
 
@@ -381,8 +396,7 @@ npm run test:riot
 
 歡迎提交 Issue 與 Pull Request！
 
-<!-- 貢獻指南文件建立後請取消下方註解 -->
-<!-- 詳細流程請參閱 [CONTRIBUTING.md](CONTRIBUTING.md)。 -->
+詳細流程請參閱 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
 開發前請確保：
 1. 執行 `npm run build` 確認 TypeScript 編譯無誤

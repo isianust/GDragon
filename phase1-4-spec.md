@@ -2,7 +2,7 @@
 
 > **Project Dragon 龍騰** — 三國大戰略遊戲  
 > **版本：** 1.0.0-draft  
-> **日期：** 2025-07  
+> **日期：** 2026-03  
 > **負責模組：** Headless Engine Core  
 > **相關原始碼：** `src/types.ts`, `src/tickEngine.ts`, `src/engine/`
 
